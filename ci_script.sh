@@ -14,11 +14,19 @@ dist() {
 
 deploy() {
     pip install -e .
-    djm_back
+}
+
+quality() {
+    source bin/activate
+    djm-back &
+    pid_djm_back=$!
+    pytest uat/
+    kill -9 $pid_djm_back
 }
 
 
 init
 unit_tests
 dist
-deploy
+deploy 
+quality
