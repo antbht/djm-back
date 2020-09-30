@@ -1,6 +1,8 @@
+import argparse
+import gunicorn.app.base
+
 from djm_back import app
 
-import gunicorn.app.base
 
 class StandaloneApplication(gunicorn.app.base.BaseApplication):
     
@@ -19,8 +21,16 @@ class StandaloneApplication(gunicorn.app.base.BaseApplication):
         return self.application
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--host", help="The IP of the expose backend api.", default="127.0.0.1",)
+    parser.add_argument("--port", help="The PORT of the expose backend api.", default="8000")
+    args = parser.parse_args()
+
+    api_ip = args.host
+    port = args.port
+
     options = {
-        'bind': '%s:%s' % ('127.0.0.1', '8000'),
+        'bind': '%s:%s' % (api_ip, port),
     }
     StandaloneApplication(app.DjmBack(), options).run()
 
