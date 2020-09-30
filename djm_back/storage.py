@@ -31,6 +31,17 @@ class MockStorage:
                         'hidden_pan': 'XXXXXXXXXXXX9123'
                     }
                 ]
+            },
+            {
+                'id': '9123', 
+                'firstname': "Karadoc", 
+                'lastname': "DE VANES",
+                'cards': [
+                    {
+                        'id':'1234',
+                        'hidden_pan': 'XXXXXXXXXXXX5678'
+                    }
+                ]
             } 
         ]
 

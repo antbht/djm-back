@@ -14,3 +14,4 @@ class DjmBack(falcon.API):
 
         res_cards = cards.CardsResource(data)
         self.add_route('/users/{user_id}/cards', res_cards)
+        self.add_route('/users/{user_id}/cards/{card_id}', res_cards)

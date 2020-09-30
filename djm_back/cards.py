@@ -32,3 +32,15 @@ class CardsResource:
         resp.media = result
         resp.content_type = falcon.MEDIA_JSON
         resp.status = falcon.HTTP_201
+
+    def on_delete(self, req, resp, user_id, card_id):
+        try:
+            result = self.data.delete_card(user_id, card_id)
+        except exceptions.UserNotFoundError as ex:
+            raise falcon.HTTPNotFound(title='User not found.', description='{}'.format(ex))
+        except exceptions.CardNotFoundError as ex:
+            raise falcon.HTTPNotFound(title='Card not found.', description='{}'.format(ex))
+        
+        resp.media = { 'id': result}
+        resp.content_type = falcon.MEDIA_JSON
+        resp.status = falcon.HTTP_200
