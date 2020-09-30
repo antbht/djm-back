@@ -1,3 +1,4 @@
+import uuid
 
 from djm_back import exceptions
 
@@ -45,3 +46,13 @@ class MockStorage:
     def get_cards(self, user_id):
         user = self.get_user(user_id)
         return user['cards']
+
+    def add_card(self, user_id, card_pan):
+        card_to_add = {
+            'id': uuid.uuid1(),
+            'hidden_pan': 'X'*12+card_pan[-4:]
+        }
+        user = self.get_user(user_id)
+        user["cards"].append(card_to_add)
+        return user["cards"]
+    

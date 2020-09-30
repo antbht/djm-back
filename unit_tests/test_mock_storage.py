@@ -58,3 +58,27 @@ class MockStorageTests(unittest.TestCase):
             data.get_cards("NOT_EXIST")
 
         
+    def test_add_card(self):
+        """ It should add a card into the user ones and should return the new list"""
+        data = storage.MockStorage()
+
+        res = data.add_card('1234', '1234567891234567')
+        expected_res = 'XXXXXXXXXXXX4567'
+        self.assertEqual(res[-1]['hidden_pan'], expected_res)
+        self.assertIn('id', res[-1])
+        
+        data = storage.MockStorage()
+
+        res = data.add_card('1234', card)
+        expected_res = [
+            {
+                'id':'9123456789123456',
+                'hidden_pan': 'XXXXXXXXXXXX1234'
+            },
+            {
+                'id':'789123456789',
+                'hidden_pan': 'XXXXXXXXXXXX4567'
+            }
+        ]
+        self.assertListEqual(res, expected_res)
+        
