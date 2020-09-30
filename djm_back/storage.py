@@ -56,3 +56,17 @@ class MockStorage:
         user["cards"].append(card_to_add)
         return user["cards"]
     
+    def delete_card(self, user_id, card_id):
+        user = self.get_user(user_id)
+
+        to_remove = -1
+        for i in range(0,len(user["cards"])):
+            card = user["cards"][i]
+            if card["id"] == card_id:
+                to_remove = i
+        
+        if to_remove != -1:  
+            user["cards"].pop(to_remove)
+            return card_id
+        
+        raise exceptions.CardNotFoundError(f"The card {card_id} is not existing for the user {user_id}")

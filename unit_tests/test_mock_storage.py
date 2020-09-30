@@ -67,18 +67,14 @@ class MockStorageTests(unittest.TestCase):
         self.assertEqual(res[-1]['hidden_pan'], expected_res)
         self.assertIn('id', res[-1])
         
+    def test_delete_card(self):
+        """ It should delete the card from the user card list"""
         data = storage.MockStorage()
+        data.delete_card('1234', '9123456789123456')
+        self.assertListEqual(data.get_cards('1234'), [])
 
-        res = data.add_card('1234', card)
-        expected_res = [
-            {
-                'id':'9123456789123456',
-                'hidden_pan': 'XXXXXXXXXXXX1234'
-            },
-            {
-                'id':'789123456789',
-                'hidden_pan': 'XXXXXXXXXXXX4567'
-            }
-        ]
-        self.assertListEqual(res, expected_res)
-        
+    def test_delete_card_error(self):
+        """ It should raise an error if we try to delete a card whoch not exist for the user."""
+        data = storage.MockStorage()
+        with self.assertRaises(exceptions.CardNotFoundError):
+            data.delete_card('1234', 'NOTEXISTINGCARD')
