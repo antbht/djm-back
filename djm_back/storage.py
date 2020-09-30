@@ -3,8 +3,8 @@ from djm_back import exceptions
 
 class MockStorage:
 
-    def get_users(self):
-        return [
+    def __init__(self):
+        self.users = [
             {
                 'id': '1234', 
                 'firstname': "Arthur", 
@@ -32,6 +32,9 @@ class MockStorage:
                 ]
             } 
         ]
+
+    def get_users(self):
+        return self.users
     
     def get_user(self, id):
         for user in self.get_users():
