@@ -17,3 +17,18 @@ class CardsResource:
         resp.media = result
         resp.content_type = falcon.MEDIA_JSON
         resp.status = falcon.HTTP_200
+
+    def on_post(self, req, resp, user_id):
+        if not 'pan' in req.media:
+            raise falcon.HTTPBadRequest(
+                "Missing thing.",
+                "To add a card please give it's PAN.")
+        
+        try:
+            result = self.data.add_card(user_id, req.media['pan'])
+        except exceptions.UserNotFoundError as ex:
+            raise falcon.HTTPNotFound(title='User not found.', description='{}'.format(ex))
+
+        resp.media = result
+        resp.content_type = falcon.MEDIA_JSON
+        resp.status = falcon.HTTP_201
