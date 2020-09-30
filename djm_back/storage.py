@@ -49,7 +49,7 @@ class MockStorage:
 
     def add_card(self, user_id, card_pan):
         card_to_add = {
-            'id': uuid.uuid1(),
+            'id': str(uuid.uuid1()),
             'hidden_pan': 'X'*12+card_pan[-4:]
         }
         user = self.get_user(user_id)
