@@ -31,7 +31,9 @@ Implements a backend API for cards management.
 This is a Python project. For good practices and environments isolation purpose, we advise to run it into a virtual envrionment.
 
 ```lang=bash
-cd /path/to/djm_back
+cd /path/to/workspace
+git clone https://github.com/antbht/djm-back.git
+cd djm-back
 virtualenv .
 source bin/activate
 pip install -r requirements.txt
@@ -55,7 +57,7 @@ To run the API, you have to install it into its own environment. It creates an e
 cd /path/to/djm_back
 source bin/activate
 pip install -e .
-djm-back --host 127.0.0.1 --ip 8000
+djm-back --host 127.0.0.1 --port 8000
 ```
 
 It runs the API server listening on 127.0.0.1:8000.
@@ -89,5 +91,3 @@ This script simulates a CI script which could be implements for GitlabCI, jenkin
 cd /path/to/djm_back
 bash ci_script.sh
 ```
-
-
