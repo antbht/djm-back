@@ -12,7 +12,7 @@ def test_get_user_cards_json():
     # Validate response headers and body contents, e.g. status code.
     assert resp.status_code == 200
     resp_body = resp.json()
-    assert resp_body == [{'id':'9123456789123456', 'hidden_pan': 'XXXXXXXXXXXX1234'}]
+    assert resp_body == [{'id':'bbba9f6a-03f8-11eb-9ac0-3c15c2c07228', 'hidden_pan': 'XXXXXXXXXXXX1234'}]
     
     # print response full body as text
     print(resp.text)

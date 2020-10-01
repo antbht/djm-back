@@ -7,12 +7,12 @@ class MockStorage:
     def __init__(self):
         self.users = [
             {
-                'id': '1234', 
+                'id': '0302', 
                 'firstname': "Arthur", 
                 'lastname': "PENDRAGON",
                 'cards': [
                     {
-                        'id':'9123456789123456',
+                        'id':'a23f0a3a-03f8-11eb-9ac0-3c15c2c07228',
                         'hidden_pan': 'XXXXXXXXXXXX1234'
                     }
                 ]
@@ -23,11 +23,11 @@ class MockStorage:
                 'lastname': "DE GALLES",
                 'cards': [
                     {
-                        'id':'7891234567891234',
+                        'id':'ac190a7e-03f8-11eb-9ac0-3c15c2c07228',
                         'hidden_pan': 'XXXXXXXXXXXX5678'
                     },
                     {
-                        'id':'5678912345678912',
+                        'id':'b0899d76-03f8-11eb-9ac0-3c15c2c07228',
                         'hidden_pan': 'XXXXXXXXXXXX9123'
                     }
                 ]
@@ -38,11 +38,22 @@ class MockStorage:
                 'lastname': "DE VANES",
                 'cards': [
                     {
-                        'id':'1234',
+                        'id':'b479de46-03f8-11eb-9ac0-3c15c2c07228',
                         'hidden_pan': 'XXXXXXXXXXXX5678'
                     }
                 ]
-            } 
+            },
+            {
+                'id': '1234', 
+                'firstname': "Lancelot", 
+                'lastname': "DU LAC",
+                'cards': [
+                    {
+                        'id':'bbba9f6a-03f8-11eb-9ac0-3c15c2c07228',
+                        'hidden_pan': 'XXXXXXXXXXXX1234'
+                    }
+                ]
+            }, 
         ]
 
     def get_users(self):

@@ -21,12 +21,12 @@ class MockStorageTests(unittest.TestCase):
         """ Get a user with its id should return all the information about the user"""
         data = storage.MockStorage()
         expected_res = {
-            'id': '1234', 
+            'id': '0302', 
             'firstname': "Arthur", 
             'lastname': "PENDRAGON",
             'cards': [
                 {
-                    'id':'9123456789123456',
+                    'id':'a23f0a3a-03f8-11eb-9ac0-3c15c2c07228',
                     'hidden_pan': 'XXXXXXXXXXXX1234'
                 }
             ]
@@ -45,11 +45,11 @@ class MockStorageTests(unittest.TestCase):
         data = storage.MockStorage()
         expected_res = [
             {
-                'id':'9123456789123456',
+                'id':'a23f0a3a-03f8-11eb-9ac0-3c15c2c07228',
                 'hidden_pan': 'XXXXXXXXXXXX1234'
             }
         ]
-        self.assertListEqual(expected_res, data.get_cards(user_id='1234'))
+        self.assertListEqual(expected_res, data.get_cards(user_id='0302'))
 
     def test_get_cards_user_error(self):
         """ It should raise an error if the given user is not exist."""
@@ -70,7 +70,7 @@ class MockStorageTests(unittest.TestCase):
     def test_delete_card(self):
         """ It should delete the card from the user card list"""
         data = storage.MockStorage()
-        data.delete_card('1234', '9123456789123456')
+        data.delete_card('1234', 'bbba9f6a-03f8-11eb-9ac0-3c15c2c07228')
         self.assertListEqual(data.get_cards('1234'), [])
 
     def test_delete_card_error(self):
