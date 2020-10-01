@@ -11,7 +11,9 @@ setup(
     license='MIT',
     packages=find_packages(exclude=['unit_tests',]),
     install_requires=[
-
+        "falcon>=2.0.0",
+        "gunicorn>=20.0.4",
+        "requests>=2.24.0"
     ],
     entry_points={
         'console_scripts': [
